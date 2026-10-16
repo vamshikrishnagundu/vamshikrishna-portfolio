@@ -1,0 +1,110 @@
+
+
+---
+import BiographyTabs from "../components/BiographyTabs.astro";
+
+const name = "Vamshikrishna Gundu";
+---
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biography | {name}</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/">Vamshikrishna Gundu</a>
+        <a href="/">Home</a>
+        <a href="/biography">Biography</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>{name}</h1>
+        <p>Data Engineer | Data Scientist | Data Analyst</p>
+        <span>OPEN TO OPPORTUNITIES</span>
+      </section>
+
+      
+<section class="biography">
+  <BiographyTabs />
+</section>
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    color: #1e293b;
+    line-height: 1.7;
+  }
+
+  header {
+    background: white;
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  .intro {
+    text-align: center;
+    padding: 90px 20px;
+    background: white;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 52px);
+  }
+
+  .intro span {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .biography {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+  }
+
+  .biography :global(h2) {
+  margin-top: 35px;
+  color: #1d4ed8;
+  }
+
+  @media (max-width: 768px) {
+    .biography {
+      margin: 20px;
+      padding: 25px;
+    }
+  }
+</style>

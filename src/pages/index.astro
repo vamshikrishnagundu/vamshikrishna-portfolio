@@ -1,0 +1,654 @@
+
+---
+import Navbar from "../components/Navbar.astro";
+
+const name = "Vamshikrishna Gundu";
+
+const slides = [
+  {
+    category: "PROFESSIONAL EXPERIENCE",
+    title: "Data Engineer",
+    institution: "VIBHO Technologies",
+    location: "India",
+    period: "2023 – 2024",
+    logo: "/logos/vibho.png",
+    icon: "💼",
+  },
+  {
+    category: "MASTER'S EDUCATION",
+    title: "Master of Science — Data Science & Analytics",
+    institution: "EPITA — École Pour l'Informatique et les Techniques Avancées",
+    location: "Paris, France",
+    period: "2025 – Present",
+    logo: "/logos/epita.png",
+    icon: "🎓",
+  },
+  {
+    category: "BACHELOR'S EDUCATION",
+    title: "Bachelor of Technology — Computer Science & Engineering",
+    institution: "Jawaharlal Nehru Technological University Hyderabad (JNTUH)",
+    location: "Hyderabad, India",
+    period: "2018 – 2022",
+    logo: "/logos/jntuh.png",
+    icon: "🎓",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Professional portfolio of Vamshikrishna Gundu — Data Engineering, Data Science, Analytics and AI."
+    />
+    <title>{name} | Portfolio</title>
+  </head>
+
+  <body>
+    <Navbar />
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>Welcome to My Portfolio</h1>
+
+          <p class="subtitle">
+            Explore my professional journey and technical expertise
+            as a Master of Science student
+          </p>
+
+          <div class="carousel" aria-label="Professional journey">
+            <div class="carousel-track">
+              {slides.map((slide, index) => (
+                <article
+                  class:list={["slide", { active: index === 0 }]}
+                  aria-hidden={index !== 0 ? "true" : "false"}
+                >
+                  <div class="slide-heading">
+                    <div class="logo-container">
+                      <img
+                        src={slide.logo}
+                        alt={`${slide.institution} logo`}
+                        class="slide-logo"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"
+                      />
+                      <span class="fallback-icon" style="display:none">
+                        {slide.icon}
+                      </span>
+                    </div>
+                    <span class="category">{slide.category}</span>
+                  </div>
+
+                  <h2>{slide.title}</h2>
+                  <p class="institution">{slide.institution}</p>
+                  <p class="location">{slide.location}</p>
+                  <p class="period">{slide.period}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="arrow" id="prev" aria-label="Previous slide">
+              &#10094;
+            </button>
+
+            <div class="dots" aria-label="Choose slide">
+              {slides.map((_, index) => (
+                <button
+                  class:list={["dot", { active: index === 0 }]}
+                  data-index={index}
+                  aria-label={`Go to slide ${index + 1}`}
+                  aria-current={index === 0 ? "true" : "false"}
+                ></button>
+              ))}
+            </div>
+
+            <button class="arrow" id="next" aria-label="Next slide">
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="about-card">
+          <div class="profile-area">
+            <div class="profile-placeholder">VG</div>
+            <span class="availability">OPEN TO OPPORTUNITIES</span>
+          </div>
+
+          <div class="about-content">
+            <h2>About Me</h2>
+            <p>
+              I'm a Master's student in Data Science & Analytics
+              at EPITA, Paris, with nearly two years of
+              professional experience in data engineering.
+              I work with Python, SQL, data pipelines,
+              analytics platforms, and machine learning
+              to build reliable, practical data solutions.
+            </p>
+            <a href="/biography">Read Full Biography →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <h2>Featured Projects</h2>
+        <p>
+          Explore my work in Data Engineering,
+          Machine Learning and AI.
+        </p>
+        <a href="/projects" class="primary-link">
+          Explore My Projects →
+        </a>
+      </section>
+
+<section id="contact" class="contact-section">
+  <h2>Contact Me</h2>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="/contact">
+      <span class="contact-icon">☎</span>
+      <div>
+        <span class="contact-label">PHONE</span>
+        <strong>Contact Details</strong>
+      </div>
+    </a>
+
+    <a class="contact-card" href="/contact">
+      <span class="contact-icon">✉</span>
+      <div>
+        <span class="contact-label">EMAIL</span>
+        <strong>Send Me a Message</strong>
+      </div>
+    </a>
+
+    <a
+      class="contact-card"
+      href="https://www.linkedin.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="contact-icon">in</span>
+      <div>
+        <span class="contact-label">LINKEDIN</span>
+        <strong>Connect on LinkedIn</strong>
+      </div>
+    </a>
+  </div>
+</section>
+
+      <footer>
+        <p>© {new Date().getFullYear()} {name}. All rights reserved.</p>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #f7f9fc;
+    color: #1e293b;
+    line-height: 1.7;
+  }
+
+  .hero {
+    background: #ffffff;
+    text-align: center;
+    padding: 70px 20px 80px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 750;
+    line-height: 1.2;
+    margin: 0 0 25px;
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    font-size: clamp(17px, 2vw, 22px);
+    color: #475569;
+    margin: 0 auto 36px;
+    max-width: 900px;
+  }
+
+  .carousel {
+    max-width: 650px;
+    min-height: 255px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    position: relative;
+    min-height: 255px;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(15,23,42,.07);
+    padding: 25px 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: opacity .45s ease, transform .45s ease, visibility .45s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .slide-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 15px;
+  }
+
+  .logo-container {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .fallback-icon {
+    font-size: 30px;
+  }
+
+  .category {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: .5px;
+  }
+
+  .slide h2 {
+    font-size: clamp(17px, 2vw, 23px);
+    line-height: 1.35;
+    margin: 0 0 7px;
+  }
+
+  .institution {
+    color: #475569;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .location {
+    color: #64748b;
+    font-size: 14px;
+    margin: 4px 0;
+  }
+
+  .period {
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 5px 0 0;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border: 0;
+    border-radius: 20px;
+    background: #dbe3ee;
+    cursor: pointer;
+    padding: 0;
+    transition: all .3s ease;
+  }
+
+  .dot.active {
+    width: 34px;
+    background: #2563eb;
+  }
+
+  .arrow {
+    border: 0;
+    background: transparent;
+    color: #64748b;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .arrow:hover {
+    color: #2563eb;
+  }
+
+  .about-section {
+    padding: 70px 24px;
+    background: #f7f9fc;
+  }
+
+  .about-card {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(15,23,42,.06);
+    padding: 70px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .profile-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .profile-placeholder {
+    width: 240px;
+    height: 240px;
+    border: 8px solid #2563eb;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 58px;
+    font-weight: bold;
+    color: #2563eb;
+    background: #eff6ff;
+  }
+
+  .availability {
+    background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .about-content h2 {
+    font-size: 34px;
+    margin-top: 0;
+  }
+
+  .about-content p {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.9;
+  }
+
+  .about-content a {
+    display: inline-block;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+
+  .projects-section {
+    text-align: center;
+    padding: 65px 24px;
+    background: white;
+  }
+
+  .projects-section h2 {
+    font-size: 30px;
+  }
+
+  .projects-section p {
+    color: #64748b;
+  }
+
+  .primary-link {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    color: #64748b;
+    padding: 25px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 50px 15px;
+    }
+
+    .carousel,
+    .carousel-track {
+      min-height: 320px;
+    }
+
+    .slide {
+      padding: 20px;
+    }
+
+    .about-card {
+      grid-template-columns: 1fr;
+      padding: 35px 24px;
+      gap: 30px;
+    }
+
+    .profile-placeholder {
+      width: 190px;
+      height: 190px;
+    }
+
+    .about-content h2 {
+      font-size: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .dot {
+      transition: none;
+    }
+  }
+  
+.contact-section {
+  background: #f7f9fc;
+  padding: 60px 24px 80px;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+}
+
+.contact-section h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 28px;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 235px;
+  padding: 17px 22px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  box-shadow: 0 3px 7px rgba(15, 23, 42, 0.06);
+  text-align: left;
+  text-decoration: none;
+  color: #1e293b;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.1);
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  color: #2563eb;
+  background: #f8fafc;
+  font-size: 19px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.contact-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-label {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.contact-card strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-card {
+    min-width: 0;
+  }
+}
+
+</style>
+
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const dots = Array.from(document.querySelectorAll(".dot"));
+  const next = document.getElementById("next");
+  const prev = document.getElementById("prev");
+
+  let current = 0;
+  let interval;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === current);
+      slide.setAttribute("aria-hidden", String(i !== current));
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === current);
+      dot.setAttribute("aria-current", String(i === current));
+    });
+  }
+
+  function startAutoPlay() {
+    clearInterval(interval);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      interval = window.setInterval(() => {
+        showSlide(current + 1);
+      }, 4500);
+    }
+  }
+
+  next?.addEventListener("click", () => {
+    showSlide(current + 1);
+    startAutoPlay();
+  });
+
+  prev?.addEventListener("click", () => {
+    showSlide(current - 1);
+    startAutoPlay();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showSlide(index);
+      startAutoPlay();
+    });
+  });
+
+  showSlide(0);
+  startAutoPlay();
+</script>

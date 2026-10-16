@@ -1,0 +1,148 @@
+
+---
+const projects = [
+  {
+    title: "Enterprise Real-Time Data Platform",
+    description:
+      "A streaming data engineering platform using Kafka, Spark, Python, PostgreSQL, and Docker.",
+    technologies: ["Python", "Kafka", "Spark", "PostgreSQL", "Docker"],
+  },
+  {
+    title: "End-to-End MLOps Pipeline",
+    description:
+      "An automated machine learning workflow for data validation, model training, experiment tracking, and API deployment.",
+    technologies: ["Python", "Airflow", "MLflow", "FastAPI", "Docker"],
+  },
+  {
+    title: "News Recommendation System",
+    description:
+      "A recommendation system combining vector retrieval, machine learning ranking, and diversity-aware recommendations.",
+    technologies: ["Python", "FAISS", "LightGBM", "FastAPI"],
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Vamshikrishna Gundu</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/biography">Biography</a>
+        <a href="/projects">Projects</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Featured Projects</h1>
+      <p class="subtitle">
+        Data Engineering, Machine Learning & AI Solutions
+      </p>
+
+      <div class="project-grid">
+        {projects.map((project) => (
+          <article class="project-card">
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <div class="technologies">
+              {project.technologies.map((tech) => (
+                <span>{tech}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    color: #1e293b;
+  }
+
+  header {
+    background: white;
+    padding: 24px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 70px auto;
+    padding: 0 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: clamp(32px, 5vw, 46px);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 50px;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 28px;
+    transition: transform 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-card h2 {
+    color: #1d4ed8;
+    font-size: 22px;
+  }
+
+  .project-card p {
+    line-height: 1.7;
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .technologies span {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+</style>
